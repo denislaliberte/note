@@ -1,4 +1,8 @@
 #!/bin/bash
+source $HOME/note.sh
+
+function project_directory() { echo "$note_workspace/$(git_root)"; }
+
 project_directory="$(project_directory)"
 
 if [ "x$1" == "x" ] || [ "x$2" == "x" ]; then
@@ -22,7 +26,7 @@ description=$2
 task_name=$task-$(echo $description | sed 's/ /-/g')
 shelf="$project_directory/$year/$month/"
 task_shelf="$project_directory/$year/$month/$date_start--$task"
-branche="features/$task_name"
+branche="new-$task_name"
 note="$project_directory/$year/$month/$date_start--$task_name.md"
 
 if [ -f $note ]; then
